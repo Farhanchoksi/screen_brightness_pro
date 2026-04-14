@@ -10,7 +10,6 @@ topics:
   - screen
   - wakelock
   - battery
-  - monitor
   - cross-platform
 
 environment:
