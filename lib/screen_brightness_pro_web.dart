@@ -115,7 +115,3 @@ class ScreenBrightnessProWeb extends ScreenBrightnessProPlatform {
   @override
   Future<void> requestWriteSettingsPermission() async {}
 }
-
-extension on String {
-  web.JSString get toJS => web.JSString(this);
-}

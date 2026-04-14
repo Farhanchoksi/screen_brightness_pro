@@ -1,6 +1,5 @@
-/// A professional Flutter plugin for controlling screen brightness, managing 
-/// native wakelocks, and monitoring battery status across multiple platforms.
 /// A professional Flutter plugin for controlling screen brightness across 6 platforms.
+library;
 
 import 'dart:async';
 import 'screen_brightness_pro_platform_interface.dart';
