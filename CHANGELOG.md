@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.0.1
+
+*   Added support for **Web** and **Linux** platforms.
+*   Implemented Simulated Brightness for Web using overlay.
+*   Implemented Native Wakelock for Web and Linux.
+*   Implemented Battery monitoring for Web and Linux.
+*   Now supports all 6 major Flutter platforms!
+
 ## 1.0.0
 
 *   Initial release of `screen_brightness_pro`.

@@ -3,7 +3,7 @@
 [![pub package](https://img.shields.io/pub/v/screen_brightness_pro.svg)](https://pub.dev/packages/screen_brightness_pro)
 [![license](https://img.shields.io/github/license/Farhanchoksi/screen_brightness_pro.svg)](https://opensource.org/licenses/MIT)
 
-A professional, high-performance Flutter plugin for controlling screen brightness, managing native wakelocks, and monitoring battery status across mobile and desktop platforms.
+A professional, high-performance Flutter plugin for controlling screen brightness, managing native wakelocks, and monitoring battery status across mobile, desktop, and web platforms.
 
 ## Why Screen Brightness Pro?
 
@@ -11,16 +11,17 @@ Most existing brightness plugins only support mobile platforms or require separa
 
 | Feature | Screen Brightness Pro | Others |
 |---------|-----------------------|--------|
-| **Multi-Platform** | Android, iOS, macOS, Windows | ❌ Mobile Only |
-| **Native Wakelock** | ✅ Integrated | ❌ Requires extra plugin |
-| **Battery Awareness**| ✅ Built-in | ❌ Not available |
+| **Multi-Platform** | Android, iOS, macOS, Windows, **Web**, **Linux** | ❌ Mobile Only |
+| **Native Wakelock** | ✅ Integrated (6 Platforms) | ❌ Requires extra plugin |
+| **Battery Awareness**| ✅ Built-in (6 Platforms) | ❌ Not available |
 | **Smooth Transitions**| ✅ Native & Dart support | ❌ Instant only |
-| **System Brightness**| ✅ All 4 platforms | ❌ Limited |
+| **System Brightness**| ✅ 5 Platforms (Web uses Simulation) | ❌ Limited |
 
 ## Features
 
-- 📱 **Universal Support**: Android, iOS, macOS, and Windows.
+- 🌐 **Universal Support**: Android, iOS, macOS, Windows, Web, and Linux.
 - 💡 **Brightness Control**: Change application-level or system-wide brightness.
+- 🌫️ **Simulated Web Brightness**: Uses a smart overlay to dim the web app when system APIs are unavailable.
 - ⚡ **Native Wakelock**: Keep the screen awake during critical tasks without extra dependencies.
 - 🔋 **Battery Monitor**: Detect battery level and Low Power Mode to auto-optimize brightness.
 - 🌊 **Smooth Transitions**: Gradually change brightness for a premium user experience.
@@ -34,6 +35,8 @@ Most existing brightness plugins only support mobile platforms or require separa
 | **iOS** | 12.0+ | No permissions required. |
 | **macOS** | 10.11+ | Low Power Mode requires macOS 12.0+. |
 | **Windows** | Windows 10+ | Uses Win32 & WMI APIs. |
+| **Web** | Modern Browsers | Uses Screen Wake Lock & Battery Status APIs. |
+| **Linux** | GTK+ 3.0 | Uses D-Bus for system interaction. |
 
 ## Installation
 
@@ -41,7 +44,7 @@ Add `screen_brightness_pro` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  screen_brightness_pro: ^1.0.0
+  screen_brightness_pro: ^1.0.1
 ```
 
 ### Android Setup

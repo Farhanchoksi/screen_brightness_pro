@@ -1,6 +1,6 @@
 name: screen_brightness_pro
-description: A professional Flutter plugin to control screen brightness, manage native wakelocks, and monitor battery status across Android, iOS, macOS, and Windows.
-version: 1.0.0
+description: A professional Flutter plugin to control screen brightness, manage native wakelocks, and monitor battery status across 6 platforms (Android, iOS, macOS, Windows, Web, Linux).
+version: 1.0.1
 homepage: https://github.com/Farhanchoksi/screen_brightness_pro
 repository: https://github.com/Farhanchoksi/screen_brightness_pro
 issue_tracker: https://github.com/Farhanchoksi/screen_brightness_pro/issues
@@ -11,6 +11,7 @@ topics:
   - wakelock
   - battery
   - monitor
+  - cross-platform
 
 environment:
   sdk: ^3.7.0
@@ -20,6 +21,9 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
+  flutter_web_plugins:
+    sdk: flutter
+  web: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +56,11 @@ flutter:
         pluginClass: ScreenBrightnessProPlugin
       windows:
         pluginClass: ScreenBrightnessProPlugin
+      linux:
+        pluginClass: ScreenBrightnessProPlugin
+      web:
+        pluginClass: ScreenBrightnessProWeb
+        fileName: screen_brightness_pro_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

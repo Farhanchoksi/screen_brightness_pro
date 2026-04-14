@@ -2,11 +2,17 @@ import Cocoa
 import FlutterMacOS
 import IOKit
 
-public class ScreenBrightnessProPlugin: NSObject, FlutterPlugin {
+public class ScreenBrightnessProPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+  private var eventSink: FlutterEventSink?
+
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "screen_brightness_pro", binaryMessenger: registrar.messenger)
+    let methodChannel = FlutterMethodChannel(name: "screen_brightness_pro", binaryMessenger: registrar.messenger)
+    let eventChannel = FlutterEventChannel(name: "screen_brightness_pro_events", binaryMessenger: registrar.messenger)
+    
     let instance = ScreenBrightnessProPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
+    
+    registrar.addMethodCallDelegate(instance, channel: methodChannel)
+    eventChannel.setStreamHandler(instance)
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -55,6 +61,18 @@ public class ScreenBrightnessProPlugin: NSObject, FlutterPlugin {
     default:
       result(FlutterMethodNotImplemented)
     }
+  }
+
+  public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+    self.eventSink = events
+    // Brightness change notification on macOS is often handled via custom timers or checking IOKit
+    // For now, we'll provide a consistent skeleton that mirrors iOS.
+    return nil
+  }
+
+  public func onCancel(withArguments arguments: Any?) -> FlutterError? {
+    self.eventSink = nil
+    return nil
   }
 
   private func getMacOSBatteryLevel() -> Double {

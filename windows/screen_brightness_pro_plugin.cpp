@@ -31,6 +31,12 @@ void ScreenBrightnessProPlugin::RegisterWithRegistrar(
         plugin_pointer->HandleMethodCall(call, std::move(result));
       });
 
+  auto events =
+      std::make_unique<flutter::EventChannel<flutter::EncodableValue>>(
+          registrar->messenger(), "screen_brightness_pro_events",
+          &flutter::StandardMethodCodec::GetInstance());
+  events->SetStreamHandler(nullptr);
+
   registrar->AddPlugin(std::move(plugin));
 }
 

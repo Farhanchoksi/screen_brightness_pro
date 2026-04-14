@@ -4,14 +4,14 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'screen_brightness_pro'
-  s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin project.'
+  s.version          = '1.0.1'
+  s.summary          = 'A professional Flutter plugin for screen brightness, wakelock and battery monitoring.'
   s.description      = <<-DESC
-A new Flutter plugin project.
+A professional, high-performance Flutter plugin for controlling screen brightness, managing native wakelocks, and monitoring battery status across mobile, desktop, and web platforms.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/Farhanchoksi/screen_brightness_pro'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Farhan Choksi' => 'farhanchoksipvt@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
@@ -25,5 +25,5 @@ A new Flutter plugin project.
   # required reason APIs, update the PrivacyInfo.xcprivacy file to describe your
   # plugin's privacy impact, and then uncomment this line. For more information,
   # see https://developer.apple.com/documentation/bundleresources/privacy_manifest_files
-  # s.resource_bundles = {'screen_brightness_pro_privacy' => ['Resources/PrivacyInfo.xcprivacy']}
+  s.resource_bundles = {'screen_brightness_pro_privacy' => ['Resources/PrivacyInfo.xcprivacy']}
 end
