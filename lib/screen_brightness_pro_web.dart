@@ -62,20 +62,24 @@ class ScreenBrightnessProWeb extends ScreenBrightnessProPlatform {
   Future<void> setKeepScreenOn(bool enabled) async {
     if (enabled) {
       try {
-        _wakeLockSentinel = await web.window.navigator.wakeLock.request('screen');
+        // Use .toDart to convert JSPromise to Future
+        final promise = web.window.navigator.wakeLock.request('screen');
+        _wakeLockSentinel = await promise.toDart;
       } catch (e) {
         web.console.warn('WakeLock not supported or failed: $e'.toJS);
       }
     } else {
-      await _wakeLockSentinel?.release();
-      _wakeLockSentinel = null;
+      if (_wakeLockSentinel != null) {
+        await _wakeLockSentinel!.release().toDart;
+        _wakeLockSentinel = null;
+      }
     }
   }
 
   @override
   Future<double> getBatteryLevel() async {
     try {
-      final battery = await web.window.navigator.getBattery();
+      final battery = await web.window.navigator.getBattery().toDart;
       return battery.level.toDouble();
     } catch (e) {
       return -1.0;
@@ -110,24 +114,6 @@ class ScreenBrightnessProWeb extends ScreenBrightnessProPlatform {
 
   @override
   Future<void> requestWriteSettingsPermission() async {}
-}
-
-extension on web.Navigator {
-  external web.WakeLock get wakeLock;
-  external Future<web.BatteryManager> getBattery();
-}
-
-extension type WakeLock(web.JSObject _) implements web.JSObject {
-  external Future<web.WakeLockSentinel> request(String type);
-}
-
-extension type WakeLockSentinel(web.JSObject _) implements web.JSObject {
-  external Future<void> release();
-}
-
-extension type BatteryManager(web.JSObject _) implements web.JSObject {
-  external double get level;
-  external bool get charging;
 }
 
 extension on String {
